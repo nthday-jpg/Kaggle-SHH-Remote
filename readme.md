@@ -1,6 +1,6 @@
-# Connect Kaggle to VS Code via SSH using Serveo
+# Connect Kaggle to VS Code via SSH using bore
 
-This guide shows you how to access your Kaggle notebook remotely through VS Code using SSH over Serveo (free, no credit card required, no installation needed).
+This guide shows you how to access your Kaggle notebook remotely through VS Code using SSH over bore.pub (free, no credit card required, simple and reliable).
 
 ## 📋 Prerequisites
 
@@ -35,15 +35,18 @@ os.environ["SSH_PASSWORD"] = "your_secure_password"  # Change this!
 
 **Look for the connection details** in the output:
 ```
-Starting SSH Tunnel via Serveo...
-===========================================
-Forwarding SSH traffic from serveo.net
-Connect with: ssh root@serveo.net -p 12345
+Starting SSH Tunnel via bore...
+==========================================
+Connecting to bore.pub...
+[INFO] listening at bore.pub:12345
 ```
 
-You'll see a command like: `ssh root@serveo.net -p 12345`
+You'll see a port number like `12345`. Your SSH command will be:
+```bash
+ssh root@bore.pub -p 12345
+```
 
-**Copy this entire command** - this is what you'll use to connect!
+**Copy this command with your port number** - this is what you'll use to connect!
 
 ### Step 3: Connect from VS Code
 
@@ -51,11 +54,11 @@ You'll see a command like: `ssh root@serveo.net -p 12345`
 2. **Press** `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac)
 3. **Type and select**: `Remote-SSH: Connect to Host...`
 4. **Select**: `Add New SSH Host...`
-5. **Paste the SSH command** from the Kaggle output (example):
+5. **Enter the SSH command** using the port from Kaggle output:
    ```bash
-   ssh root@serveo.net -p 12345
+   ssh root@bore.pub -p 12345
    ```
-   Use the EXACT command and port number shown in your Kaggle notebook output
+   Replace `12345` with the EXACT port number shown in your Kaggle notebook output
 
 6. **Select the config file** to save to (usually the first option)
 7. **Click** `Connect` when prompted
@@ -67,13 +70,13 @@ You'll see a command like: `ssh root@serveo.net -p 12345`
 
 ### install_ssh_server.sh
 - Sets up SSH server in Kaggle environment
+- Installs bore for tunneling
 - Configures SSH with password authentication
 - Non-interactive installation (no prompts)
-- No additional tools needed (uses built-in SSH)
 
 ### run_ssh_server.sh
-- Creates an SSH reverse tunnel via Serveo.net
-- Gives you a port on serveo.net to connect to
+- Creates a tunnel to bore.pub
+- Exposes SSH on a public port at bore.pub
 - **Must keep running while you want to stay connected**
 
 ## 💡 Tips & Tricks
@@ -119,26 +122,26 @@ After connecting, you can:
 - Make sure you used `root` as the username
 - Re-run the installation script if needed
 
-### Tunnel URL not showing
-- Wait up to 30 seconds for Serveo to establish the tunnel
-- Look for the SSH command in the format: `ssh root@serveo.net -p PORT`
-- Check the cell output carefully for the connection details
-- Try re-running the `run_ssh_server.sh` cell
+### Tunnel not showing port
+- Wait a few seconds for bore to establish the tunnel
+- Look for text like: `[INFO] listening at bore.pub:PORT`
+- The port number will be shown in the output
+- Try re-running the `run_ssh_server.sh` cell if needed
 
 ### VS Code can't connect
 - Ensure you're using `root` as the username
 - Check your local firewall settings
 - Try using the full SSH command format
 
-## 🆓 Why Serveo?
+## 🆓 Why bore.pub?
 
 - **100% Free** - No credit card required
-- **Zero Installation** - Uses built-in SSH, no extra tools needed
+- **Lightweight** - Small binary, quick installation
 - **No Account Needed** - Works instantly
-- **SSH-Specific** - Designed for SSH tunneling (unlike localhost.run)
-- **Simple Setup** - Just one command
+- **Reliable** - Simple and stable
+- **Open Source** - Rust-based, auditable code
 - **Works Like ngrok** - Direct SSH connection with port forwarding
-- **Secure** - Encrypted SSH tunnel
+- **Secure** - Encrypted tunnel
 
 ## ⚠️ Important Notes
 

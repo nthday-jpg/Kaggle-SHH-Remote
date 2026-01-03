@@ -1,10 +1,11 @@
 #!/bin/bash
 set -e
 
-echo "Starting SSH Tunnel via Serveo..."
+echo "Starting SSH Tunnel via bore..."
 echo "==========================================="
-echo "Establishing connection..."
+echo "Connecting to bore.pub..."
 echo ""
-echo "Look for the SSH connection command below:"
+echo "Once connected, use this command from your local machine:"
+echo "ssh root@bore.pub -p <PORT_SHOWN_BELOW>"
 echo ""
-ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 0:localhost:22 serveo.net
+bore local 22 --to bore.pub

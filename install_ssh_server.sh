@@ -10,7 +10,14 @@ echo "Configuring SSH server..."
 # Set root password (do not echo password)
 echo "root:${PASSWORD}" | sudo chpasswd
 
-# No additional tools needed - localhost.run uses SSH reverse tunneling
+# Install bore for SSH tunneling
+echo "Installing bore..."
+wget -q https://github.com/ekzhang/bore/releases/download/v0.5.1/bore-v0.5.1-x86_64-unknown-linux-musl.tar.gz
+tar -xzf bore-v0.5.1-x86_64-unknown-linux-musl.tar.gz
+chmod +x bore
+sudo mv bore /usr/local/bin/
+rm bore-v0.5.1-x86_64-unknown-linux-musl.tar.gz
+echo "bore installed."
 
 # Install OpenSSH
 sudo apt-get update -y
