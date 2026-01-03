@@ -1,3 +1,9 @@
+# Step 1
+import os
+os.environ["NGROK_TOKEN"] = "secret"
+os.environ["SSH_PASSWORD"] = "secret"
+
+# Step 2
 ssh_dir = "/kaggle/working/Kaggle-SHH-Remote"
 
 !chmod +x {ssh_dir}/*.sh
