@@ -1,6 +1,6 @@
-# Connect Kaggle to VS Code via SSH using localhost.run
+# Connect Kaggle to VS Code via SSH using Serveo
 
-This guide shows you how to access your Kaggle notebook remotely through VS Code using SSH over localhost.run (free, no credit card required, no installation needed).
+This guide shows you how to access your Kaggle notebook remotely through VS Code using SSH over Serveo (free, no credit card required, no installation needed).
 
 ## 📋 Prerequisites
 
@@ -35,13 +35,13 @@ os.environ["SSH_PASSWORD"] = "your_secure_password"  # Change this!
 
 **Look for the connection details** in the output:
 ```
-Starting SSH Tunnel via localhost.run...
-==========================================
-Connect to serveo.net at following address:
-ssh root@abc-def-123.lhr.life -p 12345
+Starting SSH Tunnel via Serveo...
+===========================================
+Forwarding SSH traffic from serveo.net
+Connect with: ssh root@serveo.net -p 12345
 ```
 
-You'll see a command like: `ssh root@abc-def-123.lhr.life -p 12345`
+You'll see a command like: `ssh root@serveo.net -p 12345`
 
 **Copy this entire command** - this is what you'll use to connect!
 
@@ -53,9 +53,9 @@ You'll see a command like: `ssh root@abc-def-123.lhr.life -p 12345`
 4. **Select**: `Add New SSH Host...`
 5. **Paste the SSH command** from the Kaggle output (example):
    ```bash
-   ssh root@abc-def-123.lhr.life -p 12345
+   ssh root@serveo.net -p 12345
    ```
-   Use the EXACT command shown in your Kaggle notebook output
+   Use the EXACT command and port number shown in your Kaggle notebook output
 
 6. **Select the config file** to save to (usually the first option)
 7. **Click** `Connect` when prompted
@@ -72,8 +72,8 @@ You'll see a command like: `ssh root@abc-def-123.lhr.life -p 12345`
 - No additional tools needed (uses built-in SSH)
 
 ### run_ssh_server.sh
-- Creates an SSH reverse tunnel via localhost.run
-- Gives you a public hostname and port to connect to
+- Creates an SSH reverse tunnel via Serveo.net
+- Gives you a port on serveo.net to connect to
 - **Must keep running while you want to stay connected**
 
 ## 💡 Tips & Tricks
@@ -120,8 +120,8 @@ After connecting, you can:
 - Re-run the installation script if needed
 
 ### Tunnel URL not showing
-- Wait up to 30 seconds for localhost.run to establish the tunnel
-- Look for the SSH command in the format: `ssh root@xyz.lhr.life -p PORT`
+- Wait up to 30 seconds for Serveo to establish the tunnel
+- Look for the SSH command in the format: `ssh root@serveo.net -p PORT`
 - Check the cell output carefully for the connection details
 - Try re-running the `run_ssh_server.sh` cell
 
@@ -130,18 +130,19 @@ After connecting, you can:
 - Check your local firewall settings
 - Try using the full SSH command format
 
-## 🆓 Why localhost.run?
+## 🆓 Why Serveo?
 
 - **100% Free** - No credit card required
 - **Zero Installation** - Uses built-in SSH, no extra tools needed
 - **No Account Needed** - Works instantly
+- **SSH-Specific** - Designed for SSH tunneling (unlike localhost.run)
 - **Simple Setup** - Just one command
-- **Works Like ngrok** - Direct SSH connection with hostname:port
+- **Works Like ngrok** - Direct SSH connection with port forwarding
 - **Secure** - Encrypted SSH tunnel
 
 ## ⚠️ Important Notes
 
-- Kaggle notebooks have resource limits and may shut down after inactivity
+- Kaggle notebport changess and may shut down after inactivity
 - Your tunnel hostname and port change each time you start `run_ssh_server.sh`
 - For persistent connections, consider using Kaggle's longer-running notebook sessions
 - Remember to stop your notebook session when done to save resources
