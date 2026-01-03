@@ -1,4 +1,4 @@
-ssh_dir = "/kaggle/working/remote-ssh-kaggle-vscode"
+ssh_dir = "/kaggle/working/Kaggle-SHH-Remote"
 
 !chmod +x {ssh_dir}/*.sh
 
