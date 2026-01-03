@@ -7,4 +7,4 @@ echo "Establishing connection..."
 echo ""
 echo "Look for the SSH connection command below:"
 echo ""
-ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 22:localhost:22 serveo.net
+ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 0:localhost:22 serveo.net
