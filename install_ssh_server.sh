@@ -10,6 +10,14 @@ echo "Configuring SSH server..."
 # Set root password (do not echo password)
 echo "root:${PASSWORD}" | sudo chpasswd
 
+# Install ngrok for Kaggle
+echo "Installing ngrok..."
+wget -q https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+tar -xzf ngrok-v3-stable-linux-amd64.tgz -C /kaggle/working/
+chmod +x /kaggle/working/ngrok
+rm ngrok-v3-stable-linux-amd64.tgz
+echo "ngrok installed."
+
 # Install OpenSSH
 sudo apt-get update -y
 sudo apt-get install -y \
