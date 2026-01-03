@@ -10,12 +10,7 @@ echo "Configuring SSH server..."
 # Set root password (do not echo password)
 echo "root:${PASSWORD}" | sudo chpasswd
 
-# Install Cloudflare Tunnel for Kaggle
-echo "Installing cloudflared..."
-wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
-chmod +x cloudflared-linux-amd64
-sudo mv cloudflared-linux-amd64 /usr/local/bin/cloudflared
-echo "cloudflared installed."
+# No additional tools needed - localhost.run uses SSH reverse tunneling
 
 # Install OpenSSH
 sudo apt-get update -y
