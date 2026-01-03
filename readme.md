@@ -1,16 +1,55 @@
-# Connect Kaggle to VS Code via SSH using bore
+# ⚠️ DEPRECATED - DO NOT USE
 
-This guide shows you how to access your Kaggle notebook remotely through VS Code using SSH over bore.pub (free, no credit card required, simple and reliable).
+## 🚨 WARNING: THIS METHOD IS NO LONGER SUPPORTED
 
-## 📋 Prerequisites
+**Kaggle has banned SSH tunneling and remote access methods.** Using this approach may result in your Kaggle account being banned or suspended according to Kaggle's Terms of Service and acceptable use policies.
 
-- Active Kaggle notebook
-- VS Code installed on your local machine
-- VS Code Remote-SSH extension installed
+**This repository is archived for educational purposes only.**
 
-## 🚀 Quick Start
+---
 
-### Step 1: Setup in Kaggle Notebook
+## Why This No Longer Works
+
+Kaggle has implemented measures to detect and block SSH tunneling and similar remote access methods. This includes:
+- Blocking tunneling services like bore.pub, ngrok, etc.
+- Detecting SSH server installations
+- Monitoring for policy violations
+
+## ❌ Risks of Using This Method
+
+- **Account Ban**: Your Kaggle account may be permanently banned
+- **Loss of Access**: You may lose access to all Kaggle resources, competitions, and datasets
+- **Policy Violation**: This violates Kaggle's Terms of Service
+- **Detection**: Kaggle actively monitors for these practices
+
+## ✅ Recommended Alternatives
+
+Instead of trying to bypass Kaggle's restrictions, use these legitimate alternatives:
+
+1. **Use Kaggle Notebooks Directly**: Work within the Kaggle web interface
+2. **Google Colab**: Free GPU/TPU access with similar capabilities
+3. **Local Development**: Download datasets and work on your own machine
+4. **Cloud Platforms**: AWS SageMaker, Azure ML, GCP AI Platform (paid options)
+5. **Paperspace Gradient**: Free tier available for remote development
+
+---
+
+## Original Documentation (For Historical Reference Only)
+
+~~This guide shows you how to access your Kaggle notebook remotely through VS Code using SSH over bore.pub (free, no credit card required, simple and reliable).~~
+
+### ~~Prerequisites~~
+
+- ~~Active Kaggle notebook~~
+- ~~VS Code installed on your local machine~~
+- ~~VS Code Remote-SSH extension installed~~
+
+### ~~Quick Start~~ (DEPRECATED - DO NOT USE)
+
+<details>
+<summary>⚠️ Click to view original instructions (for reference only)</summary>
+
+#### Step 1: Setup in Kaggle Notebook
 
 ```python
 import os
@@ -66,7 +105,11 @@ ssh root@bore.pub -p 12345
 9. **Enter your password** when prompted (the one you set in Step 1)
 10. **Success!** You're now connected to your Kaggle notebook via VS Code
 
-## 📁 File Descriptions
+</details>
+
+---
+
+## 📁 File Descriptions (Historical)
 
 ### install_ssh_server.sh
 - Sets up SSH server in Kaggle environment
@@ -79,77 +122,29 @@ ssh root@bore.pub -p 12345
 - Exposes SSH on a public port at bore.pub
 - **Must keep running while you want to stay connected**
 
-## 💡 Tips & Tricks
+---
 
-### Keep the Tunnel Running
-- **Important**: The cell running `run_ssh_server.sh` must stay running
-- Don't stop this cell or your connection will drop
-- The tunnel stays active as long as the notebook session is alive
+## 🚫 Why This Repository Remains Public
 
-### Reconnecting
-If your connection drops:
-1. Check if the tunnel cell is still running in Kaggle
-2. If not, re-run the `run_ssh_server.sh` cell
-3. Note the new hostname and port (they change each time)
-4. Update your VS Code SSH config with the new connection details
+This repository is kept public for:
+- **Educational purposes** - Understanding how SSH tunneling works
+- **Historical reference** - Documenting what was once possible
+- **Warning others** - Preventing account bans by informing users
 
-### Security Notes
-- Change the default password to something secure
-- The tunnel URL is temporary and changes each session
-- Only you have the password to access the SSH server
-
-### Accessing Files
-Once connected via VS Code:
-- Your Kaggle workspace is at: `/kaggle/working/`
-- Your Kaggle input data is at: `/kaggle/input/`
-- You can browse and edit all files directly in VS Code
-
-### Using with Git
-After connecting, you can:
-- Clone repositories directly in the Kaggle environment
-- Use VS Code's built-in Git features
-- Push/pull changes as needed
-
-## 🔧 Troubleshooting
-
-### "Connection refused"
-- Make sure the `run_ssh_server.sh` cell is still running
-- Verify you're using the correct hostname
-- Check that SSH is running: In Kaggle, run `!ps aux | grep sshd`
-
-### "Permission denied"
-- Double-check your password
-- Make sure you used `root` as the username
-- Re-run the installation script if needed
-
-### Tunnel not showing port
-- Wait a few seconds for bore to establish the tunnel
-- Look for text like: `[INFO] listening at bore.pub:PORT`
-- The port number will be shown in the output
-- Try re-running the `run_ssh_server.sh` cell if needed
-
-### VS Code can't connect
-- Ensure you're using `root` as the username
-- Check your local firewall settings
-- Try using the full SSH command format
-
-## 🆓 Why bore.pub?
-
-- **100% Free** - No credit card required
-- **Lightweight** - Small binary, quick installation
-- **No Account Needed** - Works instantly
-- **Reliable** - Simple and stable
-- **Open Source** - Rust-based, auditable code
-- **Works Like ngrok** - Direct SSH connection with port forwarding
-- **Secure** - Encrypted tunnel
-
-## ⚠️ Important Notes
-
-- Kaggle notebport changess and may shut down after inactivity
-- Your tunnel hostname and port change each time you start `run_ssh_server.sh`
-- For persistent connections, consider using Kaggle's longer-running notebook sessions
-- Remember to stop your notebook session when done to save resources
+**Do not attempt to use these scripts on Kaggle or similar platforms that prohibit remote access.**
 
 ---
 
-**Happy Coding!** 🎉
+## Legal Disclaimer
+
+The scripts and information in this repository are provided for educational purposes only. The authors and contributors:
+- Do not encourage violation of any platform's Terms of Service
+- Are not responsible for any account suspensions or bans
+- Recommend following all platform policies and guidelines
+- Advise using only approved and legitimate access methods
+
+**By using these scripts, you acknowledge that you do so at your own risk and accept full responsibility for any consequences.**
+
+---
+
+**Stay safe and use legitimate alternatives!** 🛡️
